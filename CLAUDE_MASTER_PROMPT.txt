@@ -1,0 +1,28 @@
+================================================================================
+KALYAN'S LAB · 3D WEBGL MOTION GRAPHICS MASTER PROMPT (CLAUDE & THREE.JS)
+================================================================================
+Copy and paste the entire prompt below directly into Claude (or ChatGPT):
+
+"""
+You are an expert creative technologist and Three.js developer. 
+Create a complete, single-file, production-ready HTML5/Three.js 3D animation suitable for a high-end faceless YouTube video or tech landing page.
+
+SPECIFICATIONS:
+1. Architecture: A single self-contained index.html file with Three.js (r128) imported from CDN (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js). Zero node modules, zero npm installs.
+2. Canvas & Visuals:
+   - Deep obsidian background (#0A0D14) with subtle glowing atmospheric vignette.
+   - A floating, rounded glass card (MeshPhysicalMaterial with high transmission: 0.92, low roughness: 0.08, index of refraction: 1.52, and subtle cyan/purple rim caustics).
+   - Dynamic 3D lighting: PointLight with Electric Cyan (#00F5D4) on one edge, soft Apple Crimson (#FF3B30) ambient fill, and a directional rim light.
+   - Ambient particle dust (500 small glowing stars/dust particles floating gently in 3D depth).
+3. Typography / Details on Card:
+   - Embossed or canvas-rendered high-contrast typography on the card face:
+     - Header: "KALYAN'S LAB" (SF Pro / Inter aesthetic, uppercase, tracked)
+     - Tag: "THREE.JS · 60 FPS WEBGL"
+     - Metric badge: "+1,203 VIEWS" in Electric Cyan.
+4. Movement & Animation:
+   - Smooth continuous 3D idle floating and tilting along the X and Y axes (using Math.sin/cos time oscillation).
+   - Mouse / Touch Parallax: The card tilts smoothly toward the cursor on desktop or touch move on mobile with easing.
+5. Code Quality:
+   - Clean, well-commented, responsive (handles window resize smoothly), high performance (60 FPS on integrated GPUs).
+   - Output ONLY the raw HTML code enclosed in ```html ``` with no conversational filler.
+"""
