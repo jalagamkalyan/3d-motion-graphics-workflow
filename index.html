@@ -269,164 +269,131 @@
     topRimLight.position.set(0, 6, 2);
     scene.add(topRimLight);
 
-    // --- 3. High-Definition Canvas Textures ---
-    // Front Face Texture (Kalyan's Lab Official Identity & Studio Metrics)
+    // Front Face Texture: Clean, Minimalist, High-End 3D Component
     function createCardFrontTexture() {
       const canvas = document.createElement('canvas');
       canvas.width = 1600;
       canvas.height = 1000;
       const ctx = canvas.getContext('2d');
 
-      // Deep Obsidian Glass Base Gradient (Option 3: True Rich Black, No Pale Blue Wash)
+      // 1. Deep Obsidian Carbon Glass Base
       const grad = ctx.createLinearGradient(0, 0, 1600, 1000);
-      grad.addColorStop(0, '#11141C');
-      grad.addColorStop(0.5, '#0B0D13');
-      grad.addColorStop(1, '#06070B');
+      grad.addColorStop(0, '#0F131D');
+      grad.addColorStop(0.5, '#090B12');
+      grad.addColorStop(1, '#05060A');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 1600, 1000);
 
-      // Micro Cyber Grid Background
-      ctx.fillStyle = 'rgba(0, 245, 212, 0.035)';
-      for (let x = 40; x < 1600; x += 40) {
-        for (let y = 40; y < 1000; y += 40) {
+      // Subtle Micro-Dot Matrix Grid
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+      for (let x = 60; x < 1600; x += 60) {
+        for (let y = 60; y < 1000; y += 60) {
           ctx.beginPath();
           ctx.arc(x, y, 1.5, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      // Outer Card Chamfered Frame
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.28)';
-      ctx.lineWidth = 6;
-      ctx.strokeRect(16, 16, 1568, 968);
+      // Outer Chamfered Glass Border
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(20, 20, 1560, 960);
 
-      // Inner Neon Accent Border
-      ctx.strokeStyle = 'rgba(0, 245, 212, 0.55)';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(28, 28, 1544, 944);
+      // Inner Accent Rim
+      ctx.strokeStyle = 'rgba(0, 245, 212, 0.4)';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(32, 32, 1536, 936);
 
-      // --- Top Row: Kalyan's Lab Logo & Badge ---
-      // Logo Bar Chart Emblem
+      // --- 2. Top Header: Brand Emblem & Minimalist Tag ---
+      // Official Kalyan's Lab Bar-Chart Logo
       ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.roundRect(80, 80, 80, 72, 16);
       ctx.fill();
       ctx.stroke();
 
-      // Bars inside logo
-      ctx.fillStyle = '#FF453A'; // Coral Red
-      ctx.fillRect(94, 114, 12, 26);
-      ctx.fillStyle = '#E5E5EA'; // Platinum
-      ctx.fillRect(114, 102, 12, 38);
-      ctx.fillStyle = '#FFD60A'; // Honey Gold
-      ctx.fillRect(134, 90, 12, 50);
+      ctx.fillStyle = '#FF453A'; ctx.fillRect(94, 114, 12, 26);
+      ctx.fillStyle = '#E5E5EA'; ctx.fillRect(114, 102, 12, 38);
+      ctx.fillStyle = '#FFD60A'; ctx.fillRect(134, 90, 12, 50);
 
-      // Channel Brand Title
       ctx.fillStyle = '#FFFFFF';
       ctx.font = '900 48px -apple-system, sans-serif';
       ctx.fillText("KALYAN'S LAB", 185, 128);
 
-      // Tag Pill: $0 WORKFLOW
-      ctx.fillStyle = 'rgba(0, 245, 212, 0.16)';
+      // Status Pill: 60 FPS · WebGL
+      ctx.fillStyle = 'rgba(0, 245, 212, 0.12)';
       ctx.strokeStyle = '#00F5D4';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.roundRect(560, 88, 300, 56, 999);
+      ctx.roundRect(1240, 88, 280, 56, 999);
       ctx.fill();
       ctx.stroke();
 
       ctx.fillStyle = '#00F5D4';
       ctx.font = '800 24px monospace';
-      ctx.fillText("THREE.JS · 60 FPS", 605, 124);
+      ctx.textAlign = 'center';
+      ctx.fillText("60 FPS · WEBGL", 1380, 124);
+      ctx.textAlign = 'left';
 
-      // Right Header Badge: Real Numbers
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-      ctx.font = '600 24px -apple-system, sans-serif';
-      ctx.fillText("REAL NUMBERS FROM REAL SHORTS", 1040, 124);
-
-      // --- Centerpiece: Hero Typography ---
+      // --- 3. Hero Centerpiece Typography ---
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = '900 96px -apple-system, sans-serif';
-      ctx.letterSpacing = '-0.02em';
-      ctx.fillText("$0 3D MOTION GRAPHICS", 80, 380);
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.72)';
-      ctx.font = '500 42px -apple-system, sans-serif';
-      ctx.fillText("Procedural WebGL Engine · 100% Free · Zero After Effects", 80, 460);
-
-      // --- Middle Metric Badges (Matching Channel Success / Failed Data) ---
-      // 1. Success Breakthrough (+1,203 Views)
-      ctx.fillStyle = 'rgba(0, 245, 212, 0.14)';
-      ctx.strokeStyle = '#00F5D4';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.roundRect(80, 560, 500, 140, 22);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.fillStyle = '#00F5D4';
-      ctx.font = '900 56px -apple-system, sans-serif';
-      ctx.fillText("+1,203 VIEWS 🚀", 110, 642);
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
-      ctx.font = '600 24px -apple-system, sans-serif';
-      ctx.fillText("OVERNIGHT BREAKTHROUGH · 84% RETENTION", 110, 680);
-
-      // 2. Failed Baseline (22 Views Contrast)
-      ctx.fillStyle = 'rgba(255, 69, 58, 0.12)';
-      ctx.strokeStyle = 'rgba(255, 69, 58, 0.7)';
-      ctx.lineWidth = 2.5;
-      ctx.beginPath();
-      ctx.roundRect(620, 560, 440, 140, 22);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.fillStyle = '#FF453A';
-      ctx.font = '900 52px -apple-system, sans-serif';
-      ctx.fillText("22 VIEWS 🚨", 650, 642);
+      ctx.font = '900 108px -apple-system, sans-serif';
+      ctx.letterSpacing = '-0.03em';
+      ctx.fillText("3D MOTION GRAPHICS", 80, 420);
 
       ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-      ctx.font = '600 24px -apple-system, sans-serif';
-      ctx.fillText("BORING STOCK VISUALS KILLED HOOK", 650, 680);
+      ctx.font = '500 40px -apple-system, sans-serif';
+      ctx.fillText("Procedural WebGL Component · Built with Three.js", 80, 490);
 
-      // 3. Workflow Pill
-      ctx.fillStyle = 'rgba(255, 214, 10, 0.12)';
-      ctx.strokeStyle = 'rgba(255, 214, 10, 0.7)';
-      ctx.lineWidth = 2.5;
+      // --- 4. Elegant Glowing Procedural Wave / Vector Curve ---
+      ctx.strokeStyle = '#00F5D4';
+      ctx.lineWidth = 4;
+      ctx.shadowColor = '#00F5D4';
+      ctx.shadowBlur = 18;
       ctx.beginPath();
-      ctx.roundRect(1100, 560, 420, 140, 22);
-      ctx.fill();
+      ctx.moveTo(80, 680);
+      for (let x = 80; x <= 1520; x += 20) {
+        const y = 680 + Math.sin((x - 80) * 0.012) * 50 * Math.sin((x - 80) * 0.003);
+        ctx.lineTo(x, y);
+      }
       ctx.stroke();
+      ctx.shadowBlur = 0;
 
-      ctx.fillStyle = '#FFD60A';
-      ctx.font = '900 48px -apple-system, sans-serif';
-      ctx.fillText("CLAUDE + 3D", 1135, 642);
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
-      ctx.font = '600 24px -apple-system, sans-serif';
-      ctx.fillText("BUILT IN 20 MINUTES FOR $0", 1135, 680);
-
-      // --- Bottom Footer Row ---
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      // Secondary Accent Curve (Gold)
+      ctx.strokeStyle = 'rgba(255, 214, 10, 0.5)';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(80, 770);
-      ctx.lineTo(1520, 770);
+      ctx.moveTo(80, 710);
+      for (let x = 80; x <= 1520; x += 25) {
+        const y = 710 + Math.cos((x - 80) * 0.014) * 35;
+        ctx.lineTo(x, y);
+      }
       ctx.stroke();
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-      ctx.font = '700 28px -apple-system, sans-serif';
-      ctx.fillText("💡 AUDIENCES DO NOT CARE ABOUT SUBSCRIBER COUNT — THEY CARE ABOUT VISUAL EFFORT.", 80, 840);
+      // --- 5. Clean Minimalist Footer ---
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(80, 840);
+      ctx.lineTo(1520, 840);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+      ctx.font = '800 26px monospace';
+      ctx.fillText("$0 WORKFLOW // OPEN SOURCE THREE.JS", 80, 910);
 
       ctx.fillStyle = '#00F5D4';
       ctx.font = '800 26px monospace';
-      ctx.fillText("GITHUB: JALAGAMKALYAN/3D-MOTION-GRAPHICS-WORKFLOW", 80, 900);
+      ctx.textAlign = 'right';
+      ctx.fillText("YOUTUBE: @KALYANSLAB", 1520, 910);
+      ctx.textAlign = 'left';
 
-      ctx.fillStyle = '#FF453A';
-      ctx.font = '800 26px -apple-system, sans-serif';
-      ctx.fillText("YOUTUBE: @KALYANSLAB", 1180, 900);
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.anisotropy = 16;
+      return texture;
+    }
 
       const texture = new THREE.CanvasTexture(canvas);
       texture.anisotropy = 16;
