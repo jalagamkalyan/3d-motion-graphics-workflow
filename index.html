@@ -23,201 +23,571 @@
       height: 100%;
       z-index: 1;
     }
-    .hud {
+
+    /* Ambient Background Vignette & Glows */
+    .bg-glow-cyan {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.18) 0%, rgba(10, 13, 20, 0) 70%);
+      top: 20%;
+      left: 15%;
+      filter: blur(100px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .bg-glow-red {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 69, 58, 0.15) 0%, rgba(10, 13, 20, 0) 70%);
+      bottom: 20%;
+      right: 15%;
+      filter: blur(90px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Top HUD Navigation Bar */
+    .top-nav {
       position: absolute;
       top: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      text-align: center;
-      pointer-events: none;
-      width: 90%;
-      max-width: 600px;
+      left: 0;
+      width: 100%;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 30;
+      pointer-events: auto;
     }
-    .hud-tag {
-      font-size: 13px;
-      letter-spacing: 0.2em;
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      width: 32px;
+      height: 28px;
+      padding: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+    }
+    .bar { border-radius: 2px; }
+    .bar-1 { width: 6px; height: 12px; background: #FF453A; }
+    .bar-2 { width: 6px; height: 18px; background: #E5E5EA; }
+    .bar-3 { width: 6px; height: 24px; background: #FFD60A; }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #00F5D4;
-      font-weight: 800;
-      padding: 8px 18px;
-      background: rgba(0, 245, 212, 0.12);
-      border: 1px solid rgba(0, 245, 212, 0.4);
-      border-radius: 999px;
-      display: inline-block;
-      margin-bottom: 8px;
-      box-shadow: 0 4px 20px rgba(0, 245, 212, 0.2);
+      color: #FFFFFF;
     }
-    .hud-title {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.85);
+    .brand-sub {
+      font-size: 12px;
+      color: #00F5D4;
       font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    .interaction-pill {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 15px;
-      font-weight: 800;
       letter-spacing: 0.08em;
-      color: #00F5D4;
-      background: rgba(10, 13, 20, 0.85);
-      border: 1.5px solid rgba(0, 245, 212, 0.6);
-      box-shadow: 0 8px 32px rgba(0, 245, 212, 0.35);
-      padding: 14px 32px;
-      border-radius: 999px;
-      z-index: 20;
-      pointer-events: none;
+      text-transform: uppercase;
+    }
+
+    /* Subscribe Button - Directly Points to Kalyan's Lab */
+    .btn-subscribe {
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      padding: 10px 22px;
+      background: #FF0000;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.45);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-subscribe:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 30px rgba(255, 0, 0, 0.65);
+      background: #FF1A1A;
+    }
+    .btn-subscribe svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Bottom Control Dock */
+    .bottom-dock {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 30;
+      pointer-events: auto;
+      max-width: 95vw;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .dock-pill {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #00F5D4;
+      background: rgba(16, 21, 32, 0.85);
+      border: 1px solid rgba(0, 245, 212, 0.45);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-transform: uppercase;
       backdrop-filter: blur(16px);
-      white-space: nowrap;
+      user-select: none;
     }
-    @media (max-height: 700px) {
-      .hud { top: 16px; }
-      .hud-tag { font-size: 11px; padding: 6px 14px; }
-      .hud-title { font-size: 15px; }
-      .interaction-pill { bottom: 20px; font-size: 13px; padding: 10px 22px; }
+    .dock-btn {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dock-btn:hover {
+      background: rgba(0, 245, 212, 0.2);
+      border-color: #00F5D4;
+      color: #00F5D4;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 650px) {
+      .top-nav { padding: 0 16px; top: 16px; }
+      .brand-title { font-size: 14px; }
+      .btn-subscribe { padding: 8px 16px; font-size: 12px; }
+      .bottom-dock { bottom: 16px; gap: 8px; }
+      .dock-pill { font-size: 11px; padding: 8px 14px; }
+      .dock-btn { font-size: 11px; padding: 8px 12px; }
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-  <div class="hud">
-    <div class="hud-tag">⚡ Kalyan's Lab · $0 Motion Graphics</div>
-    <div class="hud-title">Interactive 3D WebGL Glass Card</div>
-  </div>
+  <div class="bg-glow-cyan"></div>
+  <div class="bg-glow-red"></div>
 
+  <!-- Top Navigation with Official Brand & YouTube Subscribe Button -->
+  <header class="top-nav">
+    <div class="brand-wrap">
+      <div class="brand-logo" title="Kalyan's Lab">
+        <div class="bar bar-1"></div>
+        <div class="bar bar-2"></div>
+        <div class="bar bar-3"></div>
+      </div>
+      <div class="brand-text-wrap">
+        <span class="brand-title">Kalyan's Lab</span>
+        <span class="brand-sub">Three.js $0 Motion Graphics</span>
+      </div>
+    </div>
+
+    <!-- Official Channel Subscription Link with Confirmation Prompt -->
+    <a href="https://www.youtube.com/@KalyansLab?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-subscribe" id="ytSubscribeBtn">
+      <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      <span>Subscribe to Kalyan's Lab</span>
+    </a>
+  </header>
+
+  <!-- Canvas Container for 3D Scene -->
   <div id="canvas-container"></div>
-  <div class="interaction-pill">👆 Move mouse or drag screen to tilt card</div>
+
+  <!-- Interactive Controls Dock -->
+  <footer class="bottom-dock">
+    <div class="dock-pill">👆 Move mouse / drag to tilt card</div>
+    <button class="dock-btn" id="btnSpin">🔄 360° Spin</button>
+    <button class="dock-btn" id="btnWireframe">🌐 Wireframe</button>
+    <a href="https://github.com/jalagamkalyan/3d-motion-graphics-workflow" target="_blank" class="dock-btn" style="text-decoration: none;">💻 GitHub Code</a>
+  </footer>
 
   <script>
+    // --- 1. Scene & Camera Setup ---
     const container = document.getElementById('canvas-container');
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0A0D14, 0.05);
+    scene.fog = new THREE.FogExp2(0x0A0D14, 0.04);
 
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.z = 7;
+    camera.position.set(0, 0, 7.2);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.3;
+    renderer.toneMappingExposure = 1.35;
     container.appendChild(renderer.domElement);
 
+    // --- 2. Advanced Multi-Point Lighting ---
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
     scene.add(ambientLight);
 
-    const cyanLight = new THREE.PointLight(0x00F5D4, 3.5, 20);
-    cyanLight.position.set(-3, 2, 3);
+    const cyanLight = new THREE.PointLight(0x00F5D4, 4.2, 25);
+    cyanLight.position.set(-3.5, 2.5, 3.5);
     scene.add(cyanLight);
 
-    const redLight = new THREE.PointLight(0xFF453A, 2.8, 20);
-    redLight.position.set(3, -2, 2);
+    const redLight = new THREE.PointLight(0xFF453A, 3.0, 22);
+    redLight.position.set(3.5, -2.5, 2.8);
     scene.add(redLight);
 
-    const topRimLight = new THREE.DirectionalLight(0xffffff, 1.8);
-    topRimLight.position.set(0, 5, 2);
+    const goldLight = new THREE.PointLight(0xFFD60A, 2.2, 18);
+    goldLight.position.set(0, 3.8, 1.5);
+    scene.add(goldLight);
+
+    const topRimLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    topRimLight.position.set(0, 6, 2);
     scene.add(topRimLight);
 
-    function createCardTexture() {
+    // --- 3. High-Definition Canvas Textures ---
+    // Front Face Texture (Kalyan's Lab Official Identity & Studio Metrics)
+    function createCardFrontTexture() {
       const canvas = document.createElement('canvas');
-      canvas.width = 1024;
-      canvas.height = 640;
+      canvas.width = 1600;
+      canvas.height = 1000;
       const ctx = canvas.getContext('2d');
 
-      const grad = ctx.createLinearGradient(0, 0, 1024, 640);
-      grad.addColorStop(0, 'rgba(25, 30, 48, 0.92)');
-      grad.addColorStop(1, 'rgba(10, 14, 22, 0.98)');
+      // Dark Obsidian Glass Base Gradient
+      const grad = ctx.createLinearGradient(0, 0, 1600, 1000);
+      grad.addColorStop(0, 'rgba(24, 32, 52, 0.96)');
+      grad.addColorStop(0.5, 'rgba(14, 18, 30, 0.98)');
+      grad.addColorStop(1, 'rgba(10, 13, 20, 0.99)');
       ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 1024, 640);
+      ctx.fillRect(0, 0, 1600, 1000);
 
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-      ctx.lineWidth = 4;
-      ctx.strokeRect(8, 8, 1008, 624);
+      // Micro Cyber Grid Background
+      ctx.fillStyle = 'rgba(0, 245, 212, 0.035)';
+      for (let x = 40; x < 1600; x += 40) {
+        for (let y = 40; y < 1000; y += 40) {
+          ctx.beginPath();
+          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Outer Card Chamfered Frame
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.28)';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(16, 16, 1568, 968);
+
+      // Inner Neon Accent Border
+      ctx.strokeStyle = 'rgba(0, 245, 212, 0.55)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(28, 28, 1544, 944);
+
+      // --- Top Row: Kalyan's Lab Logo & Badge ---
+      // Logo Bar Chart Emblem
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(80, 80, 80, 72, 16);
+      ctx.fill();
+      ctx.stroke();
+
+      // Bars inside logo
+      ctx.fillStyle = '#FF453A'; // Coral Red
+      ctx.fillRect(94, 114, 12, 26);
+      ctx.fillStyle = '#E5E5EA'; // Platinum
+      ctx.fillRect(114, 102, 12, 38);
+      ctx.fillStyle = '#FFD60A'; // Honey Gold
+      ctx.fillRect(134, 90, 12, 50);
+
+      // Channel Brand Title
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '900 48px -apple-system, sans-serif';
+      ctx.fillText("KALYAN'S LAB", 185, 128);
+
+      // Tag Pill: $0 WORKFLOW
+      ctx.fillStyle = 'rgba(0, 245, 212, 0.16)';
+      ctx.strokeStyle = '#00F5D4';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(560, 88, 300, 56, 999);
+      ctx.fill();
+      ctx.stroke();
 
       ctx.fillStyle = '#00F5D4';
-      ctx.font = 'bold 30px -apple-system, sans-serif';
-      ctx.fillText("KALYAN'S LAB · THREE.JS", 50, 80);
+      ctx.font = '800 24px monospace';
+      ctx.fillText("THREE.JS · 60 FPS", 605, 124);
 
+      // Right Header Badge: Real Numbers
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '600 24px -apple-system, sans-serif';
+      ctx.fillText("REAL NUMBERS FROM REAL SHORTS", 1040, 124);
+
+      // --- Centerpiece: Hero Typography ---
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '900 96px -apple-system, sans-serif';
+      ctx.letterSpacing = '-0.02em';
+      ctx.fillText("$0 3D MOTION GRAPHICS", 80, 380);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.72)';
+      ctx.font = '500 42px -apple-system, sans-serif';
+      ctx.fillText("Procedural WebGL Engine · 100% Free · Zero After Effects", 80, 460);
+
+      // --- Middle Metric Badges (Matching Channel Success / Failed Data) ---
+      // 1. Success Breakthrough (+1,203 Views)
+      ctx.fillStyle = 'rgba(0, 245, 212, 0.14)';
       ctx.strokeStyle = '#00F5D4';
       ctx.lineWidth = 3;
-      ctx.strokeRect(50, 135, 80, 60);
-      ctx.fillStyle = 'rgba(0, 245, 212, 0.25)';
-      ctx.fillRect(50, 135, 80, 60);
-
-      ctx.fillStyle = '#FFFFFF';
-      ctx.font = 'bold 62px -apple-system, sans-serif';
-      ctx.fillText("$0 MOTION GRAPHICS", 50, 310);
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-      ctx.font = '32px -apple-system, sans-serif';
-      ctx.fillText("Real-time WebGL · 60 FPS", 50, 365);
-
-      ctx.fillStyle = 'rgba(0, 245, 212, 0.15)';
-      ctx.strokeStyle = 'rgba(0, 245, 212, 0.6)';
-      ctx.lineWidth = 2;
-      ctx.fillRect(50, 450, 440, 110);
-      ctx.strokeRect(50, 450, 440, 110);
+      ctx.beginPath();
+      ctx.roundRect(80, 560, 500, 140, 22);
+      ctx.fill();
+      ctx.stroke();
 
       ctx.fillStyle = '#00F5D4';
-      ctx.font = 'bold 48px -apple-system, sans-serif';
-      ctx.fillText("+1,203 VIEWS 🚀", 70, 520);
+      ctx.font = '900 56px -apple-system, sans-serif';
+      ctx.fillText("+1,203 VIEWS 🚀", 110, 642);
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
-      ctx.font = 'bold 24px -apple-system, monospace';
-      ctx.fillText("CLAUDE + THREE.JS", 680, 520);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+      ctx.font = '600 24px -apple-system, sans-serif';
+      ctx.fillText("OVERNIGHT BREAKTHROUGH · 84% RETENTION", 110, 680);
+
+      // 2. Failed Baseline (22 Views Contrast)
+      ctx.fillStyle = 'rgba(255, 69, 58, 0.12)';
+      ctx.strokeStyle = 'rgba(255, 69, 58, 0.7)';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.roundRect(620, 560, 440, 140, 22);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#FF453A';
+      ctx.font = '900 52px -apple-system, sans-serif';
+      ctx.fillText("22 VIEWS 🚨", 650, 642);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      ctx.font = '600 24px -apple-system, sans-serif';
+      ctx.fillText("BORING STOCK VISUALS KILLED HOOK", 650, 680);
+
+      // 3. Workflow Pill
+      ctx.fillStyle = 'rgba(255, 214, 10, 0.12)';
+      ctx.strokeStyle = 'rgba(255, 214, 10, 0.7)';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.roundRect(1100, 560, 420, 140, 22);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#FFD60A';
+      ctx.font = '900 48px -apple-system, sans-serif';
+      ctx.fillText("CLAUDE + 3D", 1135, 642);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+      ctx.font = '600 24px -apple-system, sans-serif';
+      ctx.fillText("BUILT IN 20 MINUTES FOR $0", 1135, 680);
+
+      // --- Bottom Footer Row ---
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(80, 770);
+      ctx.lineTo(1520, 770);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.font = '700 28px -apple-system, sans-serif';
+      ctx.fillText("💡 AUDIENCES DO NOT CARE ABOUT SUBSCRIBER COUNT — THEY CARE ABOUT VISUAL EFFORT.", 80, 840);
+
+      ctx.fillStyle = '#00F5D4';
+      ctx.font = '800 26px monospace';
+      ctx.fillText("GITHUB: JALAGAMKALYAN/3D-MOTION-GRAPHICS-WORKFLOW", 80, 900);
+
+      ctx.fillStyle = '#FF453A';
+      ctx.font = '800 26px -apple-system, sans-serif';
+      ctx.fillText("YOUTUBE: @KALYANSLAB", 1180, 900);
 
       const texture = new THREE.CanvasTexture(canvas);
-      texture.anisotropy = 8;
+      texture.anisotropy = 16;
       return texture;
     }
 
-    const cardGeometry = new THREE.BoxGeometry(4.2, 2.6, 0.12);
-    const cardTexture = createCardTexture();
+    // Back Face Texture (Cyber Circuit Matrix & Open-Source Manifest)
+    function createCardBackTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1600;
+      canvas.height = 1000;
+      const ctx = canvas.getContext('2d');
 
-    const materials = [
-      new THREE.MeshStandardMaterial({ color: 0x111622, roughness: 0.3, metalness: 0.8 }),
-      new THREE.MeshStandardMaterial({ color: 0x111622, roughness: 0.3, metalness: 0.8 }),
-      new THREE.MeshStandardMaterial({ color: 0x00F5D4, roughness: 0.2, metalness: 0.5 }),
-      new THREE.MeshStandardMaterial({ color: 0x111622, roughness: 0.3, metalness: 0.8 }),
-      new THREE.MeshStandardMaterial({ map: cardTexture, roughness: 0.22, metalness: 0.4 }),
-      new THREE.MeshStandardMaterial({ color: 0x0A0D14, roughness: 0.4, metalness: 0.8 })
-    ];
+      ctx.fillStyle = '#0B0F18';
+      ctx.fillRect(0, 0, 1600, 1000);
 
-    const card = new THREE.Mesh(cardGeometry, materials);
-    scene.add(card);
+      // Cyber Circuit Traces
+      ctx.strokeStyle = 'rgba(0, 245, 212, 0.18)';
+      ctx.lineWidth = 4;
+      for (let i = 0; i < 8; i++) {
+        ctx.beginPath();
+        ctx.moveTo(100 + i * 180, 0);
+        ctx.lineTo(200 + i * 180, 400);
+        ctx.lineTo(150 + i * 180, 700);
+        ctx.lineTo(300 + i * 180, 1000);
+        ctx.stroke();
+      }
 
-    const particleCount = 400;
-    const particleGeometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(16, 16, 1568, 968);
 
-    for (let i = 0; i < particleCount * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 15;
-      positions[i + 1] = (Math.random() - 0.5) * 15;
-      positions[i + 2] = (Math.random() - 0.5) * 10;
+      ctx.fillStyle = '#00F5D4';
+      ctx.font = '900 80px -apple-system, sans-serif';
+      ctx.fillText("OPEN SOURCE 3D WORKFLOW", 180, 420);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.font = '600 36px -apple-system, sans-serif';
+      ctx.fillText("STEAL THIS CODE · DOWNLOAD FREE ON GITHUB", 180, 500);
+
+      ctx.fillStyle = '#FFD60A';
+      ctx.font = '800 32px monospace';
+      ctx.fillText("👉 https://github.com/jalagamkalyan/3d-motion-graphics-workflow", 180, 600);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '800 32px -apple-system, sans-serif';
+      ctx.fillText("SUBSCRIBE FOR NEXT FRIDAY'S FREE 3D DROP: @KalyansLab", 180, 680);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.anisotropy = 16;
+      return texture;
     }
-    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    const particleMaterial = new THREE.PointsMaterial({
-      color: 0x00F5D4,
-      size: 0.04,
-      transparent: true,
-      opacity: 0.7
+    // --- 4. 3D Objects & Materials ---
+    const frontTex = createCardFrontTexture();
+    const backTex = createCardBackTexture();
+
+    const cardGeo = new THREE.BoxGeometry(4.6, 2.85, 0.14);
+
+    // Ultra-Glossy Chamfered Glass Materials
+    const glassMatFront = new THREE.MeshPhysicalMaterial({
+      map: frontTex,
+      roughness: 0.12,
+      metalness: 0.2,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.06,
+      reflectivity: 0.95
     });
 
-    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    const glassMatBack = new THREE.MeshPhysicalMaterial({
+      map: backTex,
+      roughness: 0.15,
+      metalness: 0.2,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.08
+    });
+
+    const glassMatEdge = new THREE.MeshStandardMaterial({
+      color: 0x00F5D4,
+      emissive: 0x004438,
+      roughness: 0.15,
+      metalness: 0.8
+    });
+
+    const materials = [
+      glassMatEdge,
+      glassMatEdge,
+      glassMatEdge,
+      glassMatEdge,
+      glassMatFront,
+      glassMatBack
+    ];
+
+    const cardGroup = new THREE.Group();
+    const cardMesh = new THREE.Mesh(cardGeo, materials);
+    cardGroup.add(cardMesh);
+
+    // Glowing Neon Hologram Outer Trim
+    const trimGeo = new THREE.BoxGeometry(4.64, 2.89, 0.142);
+    const trimMat = new THREE.MeshBasicMaterial({
+      color: 0x00F5D4,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35
+    });
+    const trimMesh = new THREE.Mesh(trimGeo, trimMat);
+    cardGroup.add(trimMesh);
+
+    scene.add(cardGroup);
+
+    // --- 5. Futuristic Cinematic Ambient Rings ---
+    const ring1Geo = new THREE.TorusGeometry(3.6, 0.018, 16, 120);
+    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00F5D4, transparent: true, opacity: 0.35 });
+    const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+    ring1.rotation.x = Math.PI / 3.2;
+    ring1.rotation.y = Math.PI / 6;
+    scene.add(ring1);
+
+    const ring2Geo = new THREE.TorusGeometry(4.2, 0.014, 16, 120);
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xFF453A, transparent: true, opacity: 0.25 });
+    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2.rotation.x = -Math.PI / 4;
+    ring2.rotation.z = Math.PI / 5;
+    scene.add(ring2);
+
+    // --- 6. Multi-Layer Particle Universe ---
+    const pCount = 550;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    const pColors = new Float32Array(pCount * 3);
+
+    for (let i = 0; i < pCount * 3; i += 3) {
+      pPos[i] = (Math.random() - 0.5) * 18;
+      pPos[i + 1] = (Math.random() - 0.5) * 18;
+      pPos[i + 2] = (Math.random() - 0.5) * 12;
+
+      // Dual particle colors: Cyan & Pale Gold
+      if (Math.random() > 0.35) {
+        pColors[i] = 0.0; pColors[i + 1] = 0.96; pColors[i + 2] = 0.83;
+      } else {
+        pColors[i] = 1.0; pColors[i + 1] = 0.84; pColors[i + 2] = 0.2;
+      }
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    pGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+
+    const pMat = new THREE.PointsMaterial({
+      size: 0.045,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75
+    });
+    const particles = new THREE.Points(pGeo, pMat);
     scene.add(particles);
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
+    // --- 7. Mouse / Touch Interactive Physics ---
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+    let isSpinning = false;
+    let spinVelocity = 0;
+    let isWireframe = false;
 
     window.addEventListener('mousemove', (e) => {
       mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -229,31 +599,72 @@
         mouseX = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
         mouseY = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
       }
+    }, { passive: true });
+
+    // 360 Spin Trigger
+    const btnSpin = document.getElementById('btnSpin');
+    function triggerSpin() {
+      if (!isSpinning) {
+        isSpinning = true;
+        spinVelocity = 14.0;
+      }
+    }
+    btnSpin.addEventListener('click', triggerSpin);
+    container.addEventListener('click', triggerSpin);
+
+    // Wireframe Toggle
+    const btnWireframe = document.getElementById('btnWireframe');
+    btnWireframe.addEventListener('click', () => {
+      isWireframe = !isWireframe;
+      materials.forEach(m => m.wireframe = isWireframe);
+      btnWireframe.textContent = isWireframe ? '✨ Glass Mode' : '🌐 Wireframe';
     });
 
+    // Window Resize Handler
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
+    // --- 8. Render Loop ---
     let clock = new THREE.Clock();
 
     function animate() {
       requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      targetX += (mouseX - targetX) * 0.05;
-      targetY += (mouseY - targetY) * 0.05;
+      // Smooth Inertia Easing
+      targetX += (mouseX - targetX) * 0.055;
+      targetY += (mouseY - targetY) * 0.055;
 
-      card.position.y = Math.sin(elapsedTime * 1.5) * 0.15;
-      card.rotation.x = -targetY * 0.45 + Math.sin(elapsedTime * 0.8) * 0.08;
-      card.rotation.y = targetX * 0.65 + Math.cos(elapsedTime * 1.0) * 0.12;
+      // Handle 360 Spin Physics
+      if (isSpinning) {
+        cardGroup.rotation.y += spinVelocity * 0.02;
+        spinVelocity *= 0.94;
+        if (Math.abs(spinVelocity) < 0.05) {
+          isSpinning = false;
+          spinVelocity = 0;
+        }
+      } else {
+        // Natural Floating Oscillation + Parallax Tilt
+        cardGroup.rotation.x = -targetY * 0.48 + Math.sin(elapsedTime * 0.8) * 0.06;
+        cardGroup.rotation.y = targetX * 0.68 + Math.cos(elapsedTime * 0.9) * 0.08;
+      }
 
-      particles.rotation.y = elapsedTime * 0.02;
+      cardGroup.position.y = Math.sin(elapsedTime * 1.4) * 0.12;
 
-      cyanLight.position.x = Math.sin(elapsedTime) * 4;
-      cyanLight.position.y = Math.cos(elapsedTime * 0.8) * 3;
+      // Rotate Ambient Rings & Particles
+      ring1.rotation.z = elapsedTime * 0.12;
+      ring2.rotation.z = -elapsedTime * 0.08;
+      particles.rotation.y = elapsedTime * 0.015;
+
+      // Orbiting Specular Caustics
+      cyanLight.position.x = Math.sin(elapsedTime * 0.9) * 4.2 + targetX * 1.5;
+      cyanLight.position.y = Math.cos(elapsedTime * 0.7) * 3.2 + targetY * 1.5;
+
+      redLight.position.x = -Math.sin(elapsedTime * 0.8) * 4.0;
+      redLight.position.y = -Math.cos(elapsedTime * 0.6) * 3.0;
 
       renderer.render(scene, camera);
     }

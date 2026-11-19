@@ -1,6 +1,6 @@
 # The $0 3D Motion Graphics Workflow: From Prompt to 60 FPS Video
 
-**Channel:** Kalyan's Lab (@TheKalyanChakri)  
+**Channel:** Kalyan's Lab (@KalyansLab)  
 **Cost:** $0  
 **Tools Required:** Claude (or ChatGPT) + Google Chrome (or any browser) + OBS / Screen Recorder  
 **Time to Execute:** ~3 Minutes  
@@ -45,5 +45,5 @@ This workflow uses **Three.js** (the WebGL engine that powers modern websites li
 ---
 
 ## ⚡ Want the Next 3D Template?
-Subscribe to **Kalyan's Lab** on YouTube [@TheKalyanChakri](https://youtube.com/@TheKalyanChakri).  
+Subscribe to **Kalyan's Lab** on YouTube [@KalyansLab](https://youtube.com/@KalyansLab?sub_confirmation=1).  
 Every Friday, we open-source a new custom AI + code motion graphics asset!

@@ -2,12 +2,12 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Three.js](https://img.shields.io/badge/Three.js-r128-black?logo=three.js)](https://threejs.org/)
-[![YouTube](https://img.shields.io/badge/YouTube-Kalyan's%20Lab-red?logo=youtube)](https://youtube.com/@TheKalyanChakri)
+[![YouTube](https://img.shields.io/badge/YouTube-Kalyan's%20Lab-red?logo=youtube)](https://youtube.com/@KalyansLab?sub_confirmation=1)
 [![Cost](https://img.shields.io/badge/Cost-%240-success)](https://github.com/jalagamkalyan/3d-motion-graphics-workflow)
 
 Stop paying **$35/month for After Effects** or struggling for hours in Blender. 
 
-This repository contains the exact **prompt, workflow, and Three.js source code** used by **[Kalyan's Lab](https://youtube.com/@TheKalyanChakri)** to create custom, 60 FPS 3D motion graphics for **$0** that run entirely inside Google Chrome.
+This repository contains the exact **prompt, workflow, and Three.js source code** used by **[Kalyan's Lab](https://youtube.com/@KalyansLab)** to create custom, 60 FPS 3D motion graphics for **$0** that run entirely inside Google Chrome.
 
 ---
 
@@ -71,7 +71,7 @@ SPECIFICATIONS:
 
 Every Friday, we open-source a new motion graphics template and AI coding workflow.
 
-👉 **[Subscribe to Kalyan's Lab on YouTube](https://youtube.com/@TheKalyanChakri)** to follow the live channel experiment and get the next 3D component!
+👉 **[Subscribe to Kalyan's Lab on YouTube](https://youtube.com/@KalyansLab?sub_confirmation=1)** to follow the live channel experiment and get the next 3D component!
 
 ---
 
