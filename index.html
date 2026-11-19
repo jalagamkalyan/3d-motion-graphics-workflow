@@ -269,7 +269,7 @@
     topRimLight.position.set(0, 6, 2);
     scene.add(topRimLight);
 
-    // Front Face Texture: Clean, Minimalist, High-End 3D Component
+    // Front Face Texture: Clean, High-End Procedural 3D Visual
     function createCardFrontTexture() {
       const canvas = document.createElement('canvas');
       canvas.width = 1600;
@@ -278,18 +278,18 @@
 
       // 1. Deep Obsidian Carbon Glass Base
       const grad = ctx.createLinearGradient(0, 0, 1600, 1000);
-      grad.addColorStop(0, '#0F131D');
-      grad.addColorStop(0.5, '#090B12');
+      grad.addColorStop(0, '#0E121B');
+      grad.addColorStop(0.5, '#080A10');
       grad.addColorStop(1, '#05060A');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 1600, 1000);
 
-      // Subtle Micro-Dot Matrix Grid
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
-      for (let x = 60; x < 1600; x += 60) {
-        for (let y = 60; y < 1000; y += 60) {
+      // Subtle Precision Micro-Dot Matrix & Crosshairs
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+      for (let x = 80; x < 1560; x += 80) {
+        for (let y = 80; y < 960; y += 80) {
           ctx.beginPath();
-          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+          ctx.arc(x, y, 1.8, 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -299,15 +299,14 @@
       ctx.lineWidth = 4;
       ctx.strokeRect(20, 20, 1560, 960);
 
-      // Inner Accent Rim
-      ctx.strokeStyle = 'rgba(0, 245, 212, 0.4)';
+      // Inner Neon Accent Rim
+      ctx.strokeStyle = 'rgba(0, 245, 212, 0.35)';
       ctx.lineWidth = 1.5;
       ctx.strokeRect(32, 32, 1536, 936);
 
-      // --- 2. Top Header: Brand Emblem & Minimalist Tag ---
-      // Official Kalyan's Lab Bar-Chart Logo
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+      // --- 2. Top Header: Brand Emblem & Minimalist Spec ---
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.07)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.roundRect(80, 80, 80, 72, 16);
@@ -319,75 +318,105 @@
       ctx.fillStyle = '#FFD60A'; ctx.fillRect(134, 90, 12, 50);
 
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = '900 48px -apple-system, sans-serif';
+      ctx.font = '900 46px -apple-system, sans-serif';
       ctx.fillText("KALYAN'S LAB", 185, 128);
 
-      // Status Pill: 60 FPS · WebGL
+      // Status Pill: Realtime 60 FPS WebGL
       ctx.fillStyle = 'rgba(0, 245, 212, 0.12)';
       ctx.strokeStyle = '#00F5D4';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.roundRect(1240, 88, 280, 56, 999);
+      ctx.roundRect(1230, 88, 290, 56, 999);
       ctx.fill();
       ctx.stroke();
 
+      ctx.fillStyle = '#30D158';
+      ctx.beginPath();
+      ctx.arc(1265, 116, 7, 0, Math.PI * 2);
+      ctx.fill();
+
       ctx.fillStyle = '#00F5D4';
-      ctx.font = '800 24px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText("60 FPS · WEBGL", 1380, 124);
-      ctx.textAlign = 'left';
+      ctx.font = '800 22px monospace';
+      ctx.fillText("THREE.JS · 60 FPS", 1285, 124);
 
-      // --- 3. Hero Centerpiece Typography ---
-      ctx.fillStyle = '#FFFFFF';
-      ctx.font = '900 108px -apple-system, sans-serif';
-      ctx.letterSpacing = '-0.03em';
-      ctx.fillText("3D MOTION GRAPHICS", 80, 420);
+      // --- 3. Hero Visual Centerpiece: Dynamic Multi-Channel Spectrum Visualizer ---
+      // Equalizer Spectrum Columns (Volumetric Bars)
+      const barCount = 28;
+      const barWidth = 36;
+      const barGap = 16;
+      const startX = (1600 - (barCount * (barWidth + barGap) - barGap)) / 2;
+      const baseY = 540;
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-      ctx.font = '500 40px -apple-system, sans-serif';
-      ctx.fillText("Procedural WebGL Component · Built with Three.js", 80, 490);
+      for (let i = 0; i < barCount; i++) {
+        const norm = i / (barCount - 1);
+        const height = 40 + Math.sin(norm * Math.PI) * 160 + Math.cos(norm * 6.0) * 35;
+        const x = startX + i * (barWidth + barGap);
+        const y = baseY - height / 2;
 
-      // --- 4. Elegant Glowing Procedural Wave / Vector Curve ---
+        const colGrad = ctx.createLinearGradient(x, y + height, x, y);
+        colGrad.addColorStop(0, 'rgba(0, 245, 212, 0.15)');
+        colGrad.addColorStop(0.6, 'rgba(0, 245, 212, 0.85)');
+        colGrad.addColorStop(1, '#FFD60A');
+
+        ctx.fillStyle = colGrad;
+        ctx.beginPath();
+        ctx.roundRect(x, y, barWidth, height, 8);
+        ctx.fill();
+
+        // Bar Cap Glow
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(x + 4, y, barWidth - 8, 4);
+      }
+
+      // High-Frequency Laser Oscilloscope Line (Glowing Sine Wave)
       ctx.strokeStyle = '#00F5D4';
       ctx.lineWidth = 4;
       ctx.shadowColor = '#00F5D4';
-      ctx.shadowBlur = 18;
+      ctx.shadowBlur = 20;
       ctx.beginPath();
-      ctx.moveTo(80, 680);
-      for (let x = 80; x <= 1520; x += 20) {
-        const y = 680 + Math.sin((x - 80) * 0.012) * 50 * Math.sin((x - 80) * 0.003);
-        ctx.lineTo(x, y);
+      ctx.moveTo(80, baseY);
+      for (let x = 80; x <= 1520; x += 15) {
+        const norm = (x - 80) / 1440;
+        const wave = Math.sin(norm * 14.0) * 45 * Math.sin(norm * Math.PI) + Math.cos(norm * 24.0) * 18;
+        ctx.lineTo(x, baseY + wave);
       }
       ctx.stroke();
       ctx.shadowBlur = 0;
 
-      // Secondary Accent Curve (Gold)
-      ctx.strokeStyle = 'rgba(255, 214, 10, 0.5)';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(80, 710);
-      for (let x = 80; x <= 1520; x += 25) {
-        const y = 710 + Math.cos((x - 80) * 0.014) * 35;
-        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
+      // Telemetry Data Points
+      ctx.fillStyle = 'rgba(0, 245, 212, 0.7)';
+      ctx.font = '700 20px monospace';
+      ctx.fillText("[ FREQ: 48.0 kHz ]", 80, 420);
+      ctx.textAlign = 'right';
+      ctx.fillText("[ BUFFER: 60 FPS ]", 1520, 420);
+      ctx.textAlign = 'left';
+
+      // --- 4. Clean Minimalist Display Title (Below Visualizer) ---
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '900 84px -apple-system, sans-serif';
+      ctx.letterSpacing = '-0.02em';
+      ctx.fillText("3D MOTION COMPONENT", 80, 750);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      ctx.font = '600 32px -apple-system, sans-serif';
+      ctx.fillText("Real-Time Procedural WebGL · Zero External Video Plugins", 80, 810);
 
       // --- 5. Clean Minimalist Footer ---
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.moveTo(80, 840);
-      ctx.lineTo(1520, 840);
+      ctx.moveTo(80, 870);
+      ctx.lineTo(1520, 870);
       ctx.stroke();
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
-      ctx.font = '800 26px monospace';
-      ctx.fillText("$0 WORKFLOW // OPEN SOURCE THREE.JS", 80, 910);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      ctx.font = '700 22px monospace';
+      ctx.fillText("$0 WORKFLOW · THREE.JS PROCEDURAL GRAPHICS", 80, 925);
 
       ctx.fillStyle = '#00F5D4';
-      ctx.font = '800 26px monospace';
+      ctx.font = '700 22px monospace';
       ctx.textAlign = 'right';
-      ctx.fillText("YOUTUBE: @KALYANSLAB", 1520, 910);
+      ctx.fillText("KALYAN'S LAB · GITHUB: JALAGAMKALYAN", 1520, 925);
       ctx.textAlign = 'left';
 
       const texture = new THREE.CanvasTexture(canvas);
@@ -395,52 +424,110 @@
       return texture;
     }
 
-      const texture = new THREE.CanvasTexture(canvas);
-      texture.anisotropy = 16;
-      return texture;
-    }
-
-    // Back Face Texture (Cyber Circuit Matrix & Open-Source Manifest)
+    // Back Face Texture: Cybernetic Silicon Chip & GPU Micro-Architecture
     function createCardBackTexture() {
       const canvas = document.createElement('canvas');
       canvas.width = 1600;
       canvas.height = 1000;
       const ctx = canvas.getContext('2d');
 
-      ctx.fillStyle = '#0B0F18';
+      ctx.fillStyle = '#080A10';
       ctx.fillRect(0, 0, 1600, 1000);
 
-      // Cyber Circuit Traces
-      ctx.strokeStyle = 'rgba(0, 245, 212, 0.18)';
-      ctx.lineWidth = 4;
-      for (let i = 0; i < 8; i++) {
+      // Micro-Grid Matrix
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.lineWidth = 1;
+      for (let x = 40; x < 1600; x += 40) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 1000); ctx.stroke();
+      }
+      for (let y = 40; y < 1000; y += 40) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(1600, y); ctx.stroke();
+      }
+
+      // Cyber Circuit Bus Traces (Gold & Cyan)
+      ctx.strokeStyle = 'rgba(0, 245, 212, 0.28)';
+      ctx.lineWidth = 3;
+      for (let i = 0; i < 6; i++) {
         ctx.beginPath();
-        ctx.moveTo(100 + i * 180, 0);
-        ctx.lineTo(200 + i * 180, 400);
-        ctx.lineTo(150 + i * 180, 700);
-        ctx.lineTo(300 + i * 180, 1000);
+        ctx.moveTo(100 + i * 260, 0);
+        ctx.lineTo(180 + i * 260, 320);
+        ctx.lineTo(140 + i * 260, 680);
+        ctx.lineTo(260 + i * 260, 1000);
         ctx.stroke();
       }
 
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-      ctx.lineWidth = 6;
-      ctx.strokeRect(16, 16, 1568, 968);
+      ctx.strokeStyle = 'rgba(255, 214, 10, 0.25)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 5; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, 150 + i * 160);
+        ctx.lineTo(400, 200 + i * 160);
+        ctx.lineTo(1200, 200 + i * 160);
+        ctx.lineTo(1600, 250 + i * 160);
+        ctx.stroke();
+      }
 
-      ctx.fillStyle = '#00F5D4';
-      ctx.font = '900 80px -apple-system, sans-serif';
-      ctx.fillText("OPEN SOURCE 3D WORKFLOW", 180, 420);
+      // Outer Border
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(20, 20, 1560, 960);
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-      ctx.font = '600 36px -apple-system, sans-serif';
-      ctx.fillText("STEAL THIS CODE · DOWNLOAD FREE ON GITHUB", 180, 500);
+      // Central Cybernetic Silicon Die (The Microprocessor Core)
+      const chipX = 460, chipY = 250, chipW = 680, chipH = 500;
+      ctx.fillStyle = '#0E131E';
+      ctx.strokeStyle = '#00F5D4';
+      ctx.lineWidth = 3;
+      ctx.shadowColor = '#00F5D4';
+      ctx.shadowBlur = 24;
+      ctx.beginPath();
+      ctx.roundRect(chipX, chipY, chipW, chipH, 24);
+      ctx.fill();
+      ctx.stroke();
+      ctx.shadowBlur = 0;
 
+      // Chip Pin Connectors
       ctx.fillStyle = '#FFD60A';
-      ctx.font = '800 32px monospace';
-      ctx.fillText("👉 https://github.com/jalagamkalyan/3d-motion-graphics-workflow", 180, 600);
+      for (let p = chipX + 40; p < chipX + chipW - 20; p += 32) {
+        ctx.fillRect(p, chipY - 14, 16, 14);
+        ctx.fillRect(p, chipY + chipH, 16, 14);
+      }
+      for (let p = chipY + 40; p < chipY + chipH - 20; p += 32) {
+        ctx.fillRect(chipX - 14, p, 14, 16);
+        ctx.fillRect(chipX + chipW, p, 14, 16);
+      }
+
+      // Chip Emblem & Text
+      ctx.fillStyle = '#00F5D4';
+      ctx.font = '800 24px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText("< THREE.JS r128 ENGINE />", 800, chipY + 90);
 
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = '800 32px -apple-system, sans-serif';
-      ctx.fillText("SUBSCRIBE FOR NEXT FRIDAY'S FREE 3D DROP: @KalyansLab", 180, 680);
+      ctx.font = '900 64px -apple-system, sans-serif';
+      ctx.fillText("PROCEDURAL CAD", 800, chipY + 180);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.font = '600 26px -apple-system, sans-serif';
+      ctx.fillText("GPU-Accelerated 3D Mesh Component", 800, chipY + 230);
+
+      // Pinned GitHub Badge inside chip
+      ctx.fillStyle = 'rgba(0, 245, 212, 0.14)';
+      ctx.strokeStyle = '#00F5D4';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(520, chipY + 290, 560, 60, 999);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#00F5D4';
+      ctx.font = '800 24px monospace';
+      ctx.fillText("GITHUB.COM / JALAGAMKALYAN", 800, chipY + 328);
+
+      ctx.fillStyle = '#FFD60A';
+      ctx.font = '700 22px monospace';
+      ctx.fillText("FREE OPEN SOURCE WORKFLOW", 800, chipY + 410);
+
+      ctx.textAlign = 'left';
 
       const texture = new THREE.CanvasTexture(canvas);
       texture.anisotropy = 16;
