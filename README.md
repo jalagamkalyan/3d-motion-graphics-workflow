@@ -1,19 +1,30 @@
-# ⚡ $0 3D Motion Graphics Workflow (Claude + Three.js)
+# ⚡ Quantum Metropolis: $0 Three.js 3D City Engine
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Three.js](https://img.shields.io/badge/Three.js-r128-black?logo=three.js)](https://threejs.org/)
 [![YouTube](https://img.shields.io/badge/YouTube-Kalyan's%20Lab-red?logo=youtube)](https://youtube.com/@KalyansLab?sub_confirmation=1)
-[![Cost](https://img.shields.io/badge/Cost-%240-success)](https://github.com/jalagamkalyan/3d-motion-graphics-workflow)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success)](https://jalagamkalyan.github.io/3d-motion-graphics-workflow/)
 
-Stop paying **$35/month for After Effects** or struggling for hours in Blender. 
+Stop paying expensive subscriptions for stock footage or 3D templates. 
 
-This repository contains the exact **prompt, workflow, and Three.js source code** used by **[Kalyan's Lab](https://youtube.com/@KalyansLab)** to create custom, 60 FPS 3D motion graphics for **$0** that run entirely inside Google Chrome.
+This repository contains the exact **prompt, workflow, and Three.js source code** created by **[Kalyan's Lab](https://youtube.com/@KalyansLab)** to render an entire illuminated 3D metropolis at 60 FPS directly inside Google Chrome for **$0**.
 
 ---
 
-## 🎯 The YouTube Studio Experiment
+## 🌐 Live Interactive Demo
 
-> *"My channel was stuck at 22 views because generic stock clips looked boring and lazy. When I replaced stock b-roll with custom interactive Three.js 3D visuals, audience retention shot from 20% to 84%, and views exploded to **1,203 views in 24 hours**. Audiences don't care about your subscriber count—they care about visual effort."*
+Experience the live interactive WebGL diorama directly in your browser:  
+👉 **[https://jalagamkalyan.github.io/3d-motion-graphics-workflow/](https://jalagamkalyan.github.io/3d-motion-graphics-workflow/)**
+
+- **360° Turntable Orbit:** Smooth cinematic camera flyover around the floating city island.
+- **Mouse / Touch Parallax:** Move your cursor or tilt your phone screen to shift 3D perspective in real time.
+- **Dynamic Controls:** Toggle Turbo Speed, Wireframe Mode, or Hide UI for clean video recording.
+
+---
+
+## 🎯 The YouTube Creator Experiment
+
+> *"Generic stock footage and boring static cards cause immediate swipe-aways. When you put a mesmerizing, 60 FPS procedural 3D world on screen from second zero, viewer retention surges. Audiences don't care about your subscriber count—they care about visual effort."*
 
 ---
 
@@ -23,57 +34,44 @@ This repository contains the exact **prompt, workflow, and Three.js source code*
    ```bash
    git clone https://github.com/jalagamkalyan/3d-motion-graphics-workflow.git
    ```
-2. Double-click **`index.html`** to open it in **Google Chrome** (or any browser).
-3. **Move your mouse or touch the screen** to see the 3D card tilt and interact with real-time WebGL light caustics and particle physics!
-4. Zero installs, zero node_modules, zero dependencies.
+2. Double-click **`index.html`** to open it in **Google Chrome** (or any modern browser).
+3. Zero installs, zero node_modules, zero dependencies. Runs instantly on integrated or dedicated GPUs.
 
 ---
 
 ## 📋 The Master AI Prompt (Claude / ChatGPT)
 
-Want to generate your own custom 3D visuals? Copy and paste the prompt from [`CLAUDE_MASTER_PROMPT.txt`](./CLAUDE_MASTER_PROMPT.txt) directly into **Claude.ai** or **ChatGPT**:
+Want to generate your own custom 3D city or motion graphics? Copy and paste the prompt from [`CLAUDE_MASTER_PROMPT.txt`](./CLAUDE_MASTER_PROMPT.txt) directly into **Claude.ai** or **ChatGPT**:
 
 ```text
-You are an expert creative technologist and Three.js developer. 
-Create a complete, single-file, production-ready HTML5/Three.js 3D animation suitable for a high-end faceless YouTube video or tech landing page.
+You are an expert creative technologist and Three.js developer.
+Create a complete, single-file, production-ready HTML5 / Three.js r128 3D procedural diorama scene.
 
-SPECIFICATIONS:
-1. Architecture: A single self-contained index.html file with Three.js (r128) imported from CDN (https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js). Zero node modules, zero npm installs.
-2. Canvas & Visuals:
-   - Deep obsidian background (#0A0D14) with subtle glowing atmospheric vignette.
-   - A floating, rounded glass card (MeshPhysicalMaterial with high transmission: 0.92, low roughness: 0.08, index of refraction: 1.52, and subtle cyan/purple rim caustics).
-   - Dynamic 3D lighting: PointLight with Electric Cyan (#00F5D4) on one edge, soft Apple Crimson (#FF3B30) ambient fill, and a directional rim light.
-   - Ambient particle dust (500 small glowing stars/dust particles floating gently in 3D depth).
-3. Typography / Details on Card:
-   - Embossed or canvas-rendered high-contrast typography on the card face:
-     - Header: "KALYAN'S LAB" (SF Pro / Inter aesthetic, uppercase, tracked)
-     - Tag: "THREE.JS · 60 FPS WEBGL"
-     - Metric badge: "+1,203 VIEWS" in Electric Cyan.
-4. Movement & Animation:
-   - Smooth continuous 3D idle floating and tilting along the X and Y axes (using Math.sin/cos time oscillation).
-   - Mouse / Touch Parallax: The card tilts smoothly toward the cursor on desktop or touch move on mobile with easing.
-5. Code Quality:
-   - Clean, well-commented, responsive (handles window resize smoothly), high performance (60 FPS on integrated GPUs).
-   - Output ONLY the raw HTML code enclosed in ```html ``` with no conversational filler.
+SCENE ARCHITECTURE:
+1. Environment: Deep obsidian space (#04060E) with subtle exponential fog.
+2. Ground: A floating beveled square island platform (34x34 units) with dark asphalt streets, glowing cyan street conduits, and miniature warm yellow streetlamps at intersections.
+3. City Skyline: 48 procedural skyscrapers of varied footprints and stepped setbacks.
+   - Texturing: Deep dark facade with glowing window matrix (warm amber-gold, electric cyan, and xenon white).
+   - Rooftops: Penthouse setbacks, antenna masts with flashing aviation warning lights.
+4. Central Landmark (Quantum Spire): An iconic tiered skyscraper crowned with a luminous cyan crystal observation deck, a pinnacle needle spire, and twin orbiting holographic energy halos.
+5. Dynamic Street Life: 70+ high-speed data pulses / fiber-optic vehicles racing along street avenues.
+6. Lighting & Camera: Smooth 360-degree turntable orbit, dynamic specular point lights, and responsive mouse parallax inertia.
+7. Delivery: Single, self-contained index.html importing Three.js r128 from CDN. 60 FPS performance.
 ```
 
 ---
 
-## 🎬 How to Use in Your YouTube Videos / Shorts
+## 🎬 How to Use in YouTube Shorts
 
-1. Open `index.html` in Chrome and press `F11` (full screen).
-2. Record 5–10 seconds of screen video using **OBS Studio** or **Windows Game Bar** (`Win + G`).
-3. Drop the smooth 60 FPS clip directly into **CapCut**, **Premiere Pro**, or **DaVinci Resolve**.
+1. Open `index.html` in Chrome.
+2. Click **"Toggle Text"** in the bottom dock if you prefer a clean background for your own video titles.
+3. Press `F11` (full screen) and record your screen with OBS Studio or Windows Game Bar (`Win + G`).
+4. Drop the buttery-smooth 60 FPS clip directly into Premiere Pro, DaVinci Resolve, or CapCut!
 
 ---
 
-## ⚡ Next Template Dropping Friday
+## ⚡ Next 3D Component Dropping Next Friday
 
 Every Friday, we open-source a new motion graphics template and AI coding workflow.
 
-👉 **[Subscribe to Kalyan's Lab on YouTube](https://youtube.com/@KalyansLab?sub_confirmation=1)** to follow the live channel experiment and get the next 3D component!
-
----
-
-## 📄 License
-This project is open-source under the [MIT License](./LICENSE). Feel free to use it in your personal and commercial videos/websites!
+👉 **[Subscribe to Kalyan's Lab on YouTube](https://youtube.com/@KalyansLab?sub_confirmation=1)** to join the live channel experiment!
